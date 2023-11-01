@@ -19,7 +19,11 @@ export default function ContainerWithHeading(props: ContainerWithHeadingProps) {
         const elements = [];
 
         for(let i = 0; i < count; i++) {
-            elements.push(<TestElement key={i} text={`Container-${i}`} />)
+            elements.push(<TestElement
+                key={i}
+                className='bgSecond'
+                text={`Container-${i}`} 
+            />)
         }
 
         return elements;
