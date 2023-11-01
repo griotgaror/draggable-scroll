@@ -1,24 +1,17 @@
 import React from 'react';
 import styled from "styled-components";
 
-const _ScrollContainer = styled('section')`
+const _DraggableScrollContainer = styled('section')`
     display: flex;
     gap: 15px;
     overflow-x: scroll;
+    overflow-y: hidden;
     width: 100%;
-    padding: 15px 0px;
+    scrollbar-color: transparent transparent;
 
     &:hover {
         cursor: grabbing;
     }
-`;
-
-const Element = styled('span')`
-    background: #38B8C7;
-    border-radius: 5px;
-    height: 320px;
-    width: 280px;
-    flex: none;
 `;
 
 type MouseEv = React.MouseEvent<HTMLDivElement>;
@@ -31,7 +24,11 @@ interface DraggableState {
     scrollTop: number;
 }
 
-export default function ScrollContainer() {
+interface DraggableScrollContainerProps {
+    children: React.ReactNode;
+}
+
+export default function DraggableScrollContainer(props: DraggableScrollContainerProps) {
     const containerRef = React.useRef< HTMLDivElement>() as React.MutableRefObject<HTMLInputElement>
     const [ state, setState ] = React.useState<DraggableState>({
         isDragging: false,
@@ -55,13 +52,10 @@ export default function ScrollContainer() {
 
     const handleMouseMove = function(e: MouseEv){
         if (!state.isDragging) return;
-    
-        // const deltaX = e.clientX - state.startX;
-        // const deltaY = e.clientY - state.startY;
 
         const clientX = e.clientX;
         
-        const dragSpeed = 250;
+        const dragSpeed = 300;
         const container = containerRef.current as HTMLDivElement;
 
         if (clientX < state.startX) {
@@ -91,7 +85,7 @@ export default function ScrollContainer() {
     };
 
     return (
-        <_ScrollContainer
+        <_DraggableScrollContainer
             ref={containerRef}
             onMouseDown={handleMouseDown}
             onMouseUp={stopDragging}
@@ -99,9 +93,7 @@ export default function ScrollContainer() {
             onMouseLeave={stopDragging}
             onScroll={handleScroll}
         >
-            {Array(20).fill('Test').map((_, i) => (
-                <Element key={i} />
-            ))}
-        </_ScrollContainer>
+            {props.children}
+        </_DraggableScrollContainer>
     )
 }

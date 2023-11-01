@@ -12,7 +12,6 @@ export const GlobalStyle = createGlobalStyle`
         color: black;
         line-height: 1.25;
         scroll-behavior: smooth;
-        scrollbar-color: transparent transparent;
         transition: background 0.2s linear;
         -webkit-tap-highlight-color: transparent; //remove the blue highlight color on mobile tap
     }
