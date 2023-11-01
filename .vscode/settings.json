@@ -1,0 +1,13 @@
+{
+    "workbench.sideBar.location": "right",
+    "workbench.colorTheme": "Ancient One Dark - Violet",
+    "workbench.iconTheme": "vscode-icons",
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": false,
+    "editor.codeActionsOnSave": [
+        "source.organizeImports",
+        "source.formatDocument",
+        "source.fixAll.eslint"
+    ],
+    "eslint.validate": ["javascript"]
+}
