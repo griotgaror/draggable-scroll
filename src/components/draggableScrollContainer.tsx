@@ -10,7 +10,9 @@ const _DraggableScrollContainer = styled('section')`
     scrollbar-color: transparent transparent;
 
     &:hover {
-        cursor: grabbing;
+        &, * {
+            cursor: grabbing;
+        }
     }
 `;
 
@@ -80,7 +82,7 @@ export default function DraggableScrollContainer(props: DraggableScrollContainer
         setState({
             ...state,
             scrollLeft: containerRef.current?.scrollLeft || 0,
-            scrollTop: containerRef.current?.scrollTop || 0,
+            // scrollTop: containerRef.current?.scrollTop || 0,
         });
     };
 
