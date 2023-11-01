@@ -9,7 +9,7 @@ export const GlobalStyle = createGlobalStyle`
         box-sizing: border-box;
         user-select: none;
         font-family: Verdana, Geneva, Tahoma, sans-serif;
-        color: black;
+        color: #BDB5B5;
         line-height: 1.25;
         scroll-behavior: smooth;
         transition: background 0.2s linear;

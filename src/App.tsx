@@ -4,7 +4,7 @@ import { GlobalStyle } from './style/global';
 
 const _App = styled('div')`
   width: 100vw;
-  background: #0380CA;
+  background: #1A1F2D;
   display: grid;
   padding: 15px;
   gap: 15px;

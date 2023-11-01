@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const _Heading = styled('span')`
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 600px;
     margin-bottom: 15px;
 `;
