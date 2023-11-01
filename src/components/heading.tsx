@@ -4,6 +4,8 @@ const _Heading = styled('span')`
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 15px;
+    padding-top: 10px;
+    border-top: 2px solid #1F273A;
 `;
 
 interface HeadingProps {
