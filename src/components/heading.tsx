@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const _Heading = styled('span')`
     font-size: 20px;
-    font-weight: 600px;
+    font-weight: 600;
     margin-bottom: 15px;
 `;
 
