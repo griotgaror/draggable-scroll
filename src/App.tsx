@@ -4,8 +4,10 @@ import { GlobalStyle } from './style/global';
 
 const _App = styled('div')`
   width: 100vw;
+  min-height: 100dvh;
   background: #1A1F2D;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   padding: 15px;
   gap: 15px;
 `;
@@ -20,15 +22,7 @@ export default function App() {
         />
         <ContainerWithHeading 
             title='Bereich 2'
-            childrenCount={10}
-        />
-        <ContainerWithHeading 
-            title='Bereich 3'
             childrenCount={20}
-        />
-        <ContainerWithHeading 
-            title='Bereich 4'
-            childrenCount={8}
         />
     </_App>
   );
