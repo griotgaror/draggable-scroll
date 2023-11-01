@@ -16,7 +16,7 @@ export default function App() {
         <GlobalStyle />
         <ContainerWithHeading 
             title='Bereich 1'
-            childrenCount={8}
+            childrenCount={5}
         />
         <ContainerWithHeading 
             title='Bereich 2'
@@ -28,7 +28,7 @@ export default function App() {
         />
         <ContainerWithHeading 
             title='Bereich 4'
-            childrenCount={20}
+            childrenCount={8}
         />
     </_App>
   );
