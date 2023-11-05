@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from "styled-components";
 
 const _ElementWrapper = styled('div')`
@@ -6,8 +7,8 @@ const _ElementWrapper = styled('div')`
 
 const _TestElement = styled('div')`
     border-radius: 5px;
-    height: 320px;
-    width: 280px;
+    height: 280px;
+    width: 230px;
     flex: none;
     display: flex;
     justify-content: center;
@@ -19,6 +20,10 @@ const _TestElement = styled('div')`
 
     &.bgSecond {
         background: #1F273A;
+    }
+
+    &:hover > &, * {
+        cursor: pointer;
     }
 `;
 
@@ -34,8 +39,14 @@ interface TestElementProps {
 }
 
 export default function TestElement(props: TestElementProps) {
+    const ref = React.useRef<HTMLDivElement | null>(null);
+
+    const handleOnClick = function() {
+        window.alert(ref.current?.innerText);
+    }
+
     return (
-        <_ElementWrapper>
+        <_ElementWrapper ref={ref} onClick={handleOnClick}>
             <_TestElement className={props.className}>
                 <_Label>
                     {props.text}
