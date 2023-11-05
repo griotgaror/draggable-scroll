@@ -21,22 +21,10 @@ export const GlobalStyle = createGlobalStyle`
         height: 100dvh;
         width: 100vw;
     }
-
-    h1 {
-        font-size: 1.3rem;
-    }
-
-    h2 {
-        font-size: 1.1rem;
-    }
-
-    h3 {
-        font-size: 1rem;
-    }
     
     label, button, a, p, b,
     input, strong, ul {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
         font-weight: inherit;
     }
 

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from "styled-components";
 
 const DraggableScrollContainerWrapper = styled('section')`
-    display: flex;
+    display: grid;
     overflow: scroll;
     width: 100%;
     scrollbar-color: transparent transparent;

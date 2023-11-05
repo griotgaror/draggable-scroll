@@ -4,13 +4,17 @@ import Heading from './components/heading';
 import TestElement from './components/testElement';
 import { GlobalStyle } from './style/global';
 
-const _App = styled('div')`
+const AppLayoutWrapper = styled('div')`
   width: 100vw;
   min-height: 100dvh;
   background: #1A1F2D;
   display: flex;
   flex-direction: column;
   padding: 15px;
+`;
+
+const Wrapper = styled('div')`
+  display: flex;
 `;
 
 export default function App() {
@@ -29,19 +33,33 @@ export default function App() {
   }
 
   return (
-    <_App>
+    <AppLayoutWrapper>
         <GlobalStyle />
         
-        <Heading title='Bereich 1' />
+        <Heading title='Responsiv Test' />
         <DraggableScrollContainer>
-          {createTestElements(5)}
+          <Wrapper>
+            {createTestElements(5)}
+          </Wrapper>
         </DraggableScrollContainer>
 
-        <Heading title='Bereich 2' />
+        <Heading title='Long List' />
         <DraggableScrollContainer>
-          {createTestElements(20)}
+          <Wrapper>
+            {createTestElements(20)}
+          </Wrapper>
+        </DraggableScrollContainer>
+
+        <Heading title='Double List' />
+        <DraggableScrollContainer>
+          <Wrapper>
+            {createTestElements(10)}
+          </Wrapper>
+          <Wrapper>
+            {createTestElements(10)}
+          </Wrapper>
         </DraggableScrollContainer>
         
-    </_App>
+    </AppLayoutWrapper>
   );
 }
