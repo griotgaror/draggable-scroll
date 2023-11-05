@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 
-const _DraggableScrollContainer = styled('section')`
+const DraggableScrollContainerWrapper = styled('section')`
     display: flex;
     overflow: scroll;
     width: 100%;
@@ -79,7 +79,7 @@ export default function DraggableScrollContainer(props: DraggableScrollContainer
     };
 
     return (
-        <_DraggableScrollContainer
+        <DraggableScrollContainerWrapper
             className={dragableContainer.isDragging ? 'is-dragging': ''}
             ref={containerRef}
             onMouseDown={handleMouseDown}
@@ -89,6 +89,6 @@ export default function DraggableScrollContainer(props: DraggableScrollContainer
             onScroll={handleScroll}
         >
             {props.children}
-        </_DraggableScrollContainer>
+        </DraggableScrollContainerWrapper>
     )
 }
