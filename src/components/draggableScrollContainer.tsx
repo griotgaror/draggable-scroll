@@ -32,7 +32,7 @@ interface DraggableScrollContainerProps {
 
 export default function DraggableScrollContainer(props: DraggableScrollContainerProps) {
     const containerRef = React.useRef<HTMLDivElement>(null)
-    const [ dragableContainer, setDragableContainer ] = React.useState<DraggableState>({
+    const [ dragState, setDragState ] = React.useState<DraggableState>({
         startDragging: false,
         startX: 0,
         scrollLeft: 0,
@@ -41,7 +41,7 @@ export default function DraggableScrollContainer(props: DraggableScrollContainer
 
     const handleMouseDown = function(e: MouseEv){
         e.preventDefault();
-        setDragableContainer((prevState) => ({
+        setDragState((prevState) => ({
             ...prevState,
             startDragging: true,
             startX: e.clientX,
@@ -50,37 +50,37 @@ export default function DraggableScrollContainer(props: DraggableScrollContainer
     };
 
     const handleMouseMove = function(e: MouseEv){
-        if (!dragableContainer.startDragging) return;
+        if (!dragState.startDragging) return;
 
-        setDragableContainer({
-            ...dragableContainer,
+        setDragState({
+            ...dragState,
             isDragging: true,
         })
         
         const container = containerRef.current as HTMLDivElement;
-        const deltaX = e.clientX - dragableContainer.startX;
+        const deltaX = e.clientX - dragState.startX;
 
-        container.scrollLeft = dragableContainer.scrollLeft - deltaX;
+        container.scrollLeft = dragState.scrollLeft - deltaX;
     };
 
     const stopDragging = function() {
-        setDragableContainer({
-            ...dragableContainer,
+        setDragState({
+            ...dragState,
             startDragging: false,
             isDragging: false,
         })
     };
 
     const handleScroll = () => {
-        setDragableContainer({
-            ...dragableContainer,
+        setDragState({
+            ...dragState,
             scrollLeft: containerRef.current?.scrollLeft || 0,
         });
     };
 
     return (
         <DraggableScrollContainerWrapper
-            className={dragableContainer.isDragging ? 'is-dragging': ''}
+            className={dragState.isDragging ? 'is-dragging': ''}
             ref={containerRef}
             onMouseDown={handleMouseDown}
             onMouseUp={stopDragging}
