@@ -22,7 +22,7 @@ export default function ContainerWithHeading(props: ContainerWithHeadingProps) {
             elements.push(<TestElement
                 key={i}
                 className='bgSecond'
-                text={`Container-${i}`} 
+                text={`Container-${i}`}
             />)
         }
 

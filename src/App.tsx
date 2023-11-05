@@ -1,5 +1,7 @@
 import styled from 'styled-components';
-import ContainerWithHeading from './components/containerWithHeading';
+import DraggableScrollContainer from './components/draggableScrollContainer';
+import Heading from './components/heading';
+import TestElement from './components/testElement';
 import { GlobalStyle } from './style/global';
 
 const _App = styled('div')`
@@ -9,21 +11,37 @@ const _App = styled('div')`
   display: flex;
   flex-direction: column;
   padding: 15px;
-  gap: 15px;
 `;
 
 export default function App() {
+  const createTestElements = function(count: number) {
+    const elements = [];
+
+    for(let i = 0; i < count; i++) {
+        elements.push(<TestElement
+            key={i}
+            className='bgSecond'
+            text={`C-${i}`} 
+        />)
+    }
+
+    return elements;
+  }
+
   return (
     <_App>
         <GlobalStyle />
-        <ContainerWithHeading 
-            title='Bereich 1'
-            childrenCount={5}
-        />
-        <ContainerWithHeading 
-            title='Bereich 2'
-            childrenCount={20}
-        />
+        
+        <Heading title='Bereich 1' />
+        <DraggableScrollContainer>
+          {createTestElements(5)}
+        </DraggableScrollContainer>
+
+        <Heading title='Bereich 2' />
+        <DraggableScrollContainer>
+          {createTestElements(20)}
+        </DraggableScrollContainer>
+        
     </_App>
   );
 }
