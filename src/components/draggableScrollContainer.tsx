@@ -8,16 +8,20 @@ const _DraggableScrollContainer = styled('section')`
     scrollbar-color: transparent transparent;
 
     &:hover {
-        &, * {
-            cursor: grabbing;
-        }
+        cursor: grabbing;
     }
+
+    &.is-dragging > * {
+        pointer-events: none;
+    }
+
 `;
 
 type MouseEv = React.MouseEvent<HTMLDivElement>;
 
 interface DraggableState {
-    isDragging: boolean;
+    startDragging: boolean;
+    isDragging: boolean
     startX: number;
     scrollLeft: number;
 }
@@ -28,48 +32,55 @@ interface DraggableScrollContainerProps {
 
 export default function DraggableScrollContainer(props: DraggableScrollContainerProps) {
     const containerRef = React.useRef<HTMLDivElement>(null)
-    const [ state, setState ] = React.useState<DraggableState>({
-        isDragging: false,
+    const [ dragableContainer, setDragableContainer ] = React.useState<DraggableState>({
+        startDragging: false,
         startX: 0,
         scrollLeft: 0,
+        isDragging: false,
     })
 
     const handleMouseDown = function(e: MouseEv){
         e.preventDefault();
-        setState((prevState) => ({
+        setDragableContainer((prevState) => ({
             ...prevState,
-            isDragging: true,
+            startDragging: true,
             startX: e.clientX,
             scrollLeft: containerRef.current?.scrollLeft as number,
         }));
     };
 
     const handleMouseMove = function(e: MouseEv){
-        if (!state.isDragging) return;
+        if (!dragableContainer.startDragging) return;
+
+        setDragableContainer({
+            ...dragableContainer,
+            isDragging: true,
+        })
         
         const container = containerRef.current as HTMLDivElement;
+        const deltaX = e.clientX - dragableContainer.startX;
 
-        const deltaX = e.clientX - state.startX;
-
-        container.scrollLeft = state.scrollLeft - deltaX;
+        container.scrollLeft = dragableContainer.scrollLeft - deltaX;
     };
 
     const stopDragging = function() {
-        setState({
-            ...state,
+        setDragableContainer({
+            ...dragableContainer,
+            startDragging: false,
             isDragging: false,
         })
     };
 
     const handleScroll = () => {
-        setState({
-            ...state,
+        setDragableContainer({
+            ...dragableContainer,
             scrollLeft: containerRef.current?.scrollLeft || 0,
         });
     };
 
     return (
         <_DraggableScrollContainer
+            className={dragableContainer.isDragging ? 'is-dragging': ''}
             ref={containerRef}
             onMouseDown={handleMouseDown}
             onMouseUp={stopDragging}
