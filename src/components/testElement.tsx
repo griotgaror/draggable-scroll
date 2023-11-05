@@ -22,8 +22,10 @@ const _TestElement = styled('div')`
         background: #1F273A;
     }
 
-    &:hover > &, * {
-        cursor: pointer;
+    &:hover {
+        &, * {
+            cursor: pointer;
+        }
     }
 `;
 
