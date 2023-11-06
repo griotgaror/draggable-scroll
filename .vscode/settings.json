@@ -1,7 +1,7 @@
 {
   "workbench.sideBar.location": "right",
   "workbench.colorTheme": "Ancient One Dark - Violet",
-  "workbench.iconTheme": "vscode-icons",
+  "workbench.iconTheme": "file-icons",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": [
